@@ -1,14 +1,20 @@
-# Use the base image created earlier
-FROM ml-base
+# Dockerfile
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
-# Set the working directory in the container
+# Create app directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Copy the main application to the container
+COPY ./API /app/API
+
+# Copy requirements.txt to the container
+COPY requirements.txt /app/requirements.txt
+
+# Install dependencies
+RUN pip install -r requirements.txt
 
 # Expose port 80
 EXPOSE 80
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Command to run the application
+CMD ["uvicorn", "API.main:app", "--host", "0.0.0.0", "--port", "80"]

@@ -3,7 +3,7 @@ project/
 ├── app.py
 ├── model.pkl (or model.h5)
 ├── requirements.txt
-├── Dockerfile  # This is the base Dockerfile
-├── Dockerfile.app  # This is the second Dockerfile for your app
+├── Dockerfile.base  # This is the base Dockerfile
+├── Dockerfile  # This is the second Dockerfile for your app
 └── templates/
     └── index.html
